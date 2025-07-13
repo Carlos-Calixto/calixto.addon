@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca de Addons | Por CALiXTO</title>
-
-    <!-- Estilo CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
 
-    <!-- Cabeçalho -->
     <header class="banner-header">
         <img src="png/introbanner.gif" alt="Banner animado do site" class="background-gif">
         <div class="header-overlay"></div>
@@ -42,10 +35,8 @@
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main id="addons" class="main-content">
         <div class="container">
-            <!-- Filtros de Categoria -->
             <div class="filter-container">
                 <h2>Explorar Categorias</h2>
                 <div class="filter-buttons">
@@ -56,22 +47,17 @@
                 </div>
             </div>
 
-            <!-- Grid de Resultados -->
-            <div id="resultsContainer" class="results-grid">
-                <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
-            </div>
+            <div id="resultsContainer" class="results-grid"></div>
             <p id="notFoundMessage" class="hidden">
                 Nenhum conteúdo encontrado. Tente pesquisar por outro termo.
             </p>
         </div>
     </main>
 
-    <!-- Seção Sobre Mim -->
     <section id="sobre-mim" class="about-section">
         <div class="container">
             <h2>Sobre o Criador</h2>
             <div class="about-content">
-                <!-- IMAGEM E TEXTO PERSONALIZADOS -->
                 <img src="png/perfilmine.png" alt="Foto do CALiXTO" class="profile-pic">
                 <div class="about-text">
                     <h3>Olá, eu sou CALiXTO!</h3>
@@ -88,7 +74,6 @@
         </div>
     </section>
 
-    <!-- Rodapé -->
     <footer class="main-footer">
         <div class="container">
             <p>© 2024 CALiXTO. Todos os direitos reservados.</p>
@@ -96,13 +81,10 @@
         </div>
     </footer>
 
-    <!-- Modal de Detalhes (inicialmente oculto) -->
     <div id="addonModal" class="modal">
         <div class="modal-content">
             <span class="close-button">×</span>
-            <div id="modalBody">
-                <!-- Conteúdo do modal será preenchido pelo JavaScript -->
-            </div>
+            <div id="modalBody"></div>
         </div>
     </div>
 
