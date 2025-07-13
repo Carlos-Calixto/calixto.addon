@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Addons | Por [Seu Nome]</title>
+    <title>Biblioteca de Addons | Por CALiXTO</title>
 
     <!-- Estilo CSS -->
     <link rel="stylesheet" href="style.css">
@@ -24,20 +24,20 @@
         <div class="header-overlay"></div>
         <nav class="main-nav">
             <div class="container">
-                <a href="#" class="logo">[Seu Logo ou Nome]</a>
+                <a href="#" class="logo">CALiXTO</a>
                 <ul>
                     <li><a href="#">Início</a></li>
-                    <li><a href="#addons">Addons</a></li>
+                    <li><a href="#addons">Conteúdo</a></li>
                     <li><a href="#sobre-mim">Sobre Mim</a></li>
                 </ul>
             </div>
         </nav>
         <div class="header-content">
-            <h1>Sua Biblioteca de Addons</h1>
-            <p>Encontre, explore e baixe os melhores addons com um clique.</p>
+            <h1>Sua Biblioteca de Mods e Addons</h1>
+            <p>Encontre, explore e baixe o melhor conteúdo com um clique.</p>
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="searchInput" placeholder="Digite o nome do addon...">
+                <input type="search" id="searchInput" placeholder="Pesquise por addons, mods, shaders...">
             </div>
         </div>
     </header>
@@ -50,20 +50,19 @@
                 <h2>Explorar Categorias</h2>
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-category="all">Todos</button>
-                    <button class="filter-btn" data-category="Criaturas">Criaturas</button>
-                    <button class="filter-btn" data-category="Itens">Itens</button>
-                    <button class="filter-btn" data-category="UI">UI/Interface</button>
-                    <!-- Adicione mais botões para novas categorias aqui -->
+                    <button class="filter-btn" data-category="Addons">Addons</button>
+                    <button class="filter-btn" data-category="Mods">Mods</button>
+                    <button class="filter-btn" data-category="Shaders">Shaders</button>
                 </div>
             </div>
 
-            <!-- Grid de Addons -->
+            <!-- Grid de Resultados -->
             <div id="resultsContainer" class="results-grid">
                 <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
             </div>
             <p id="notFoundMessage" class="hidden">
-                Nenhum addon encontrado. Tente pesquisar por outro termo ou limpar os filtros.
-            p>
+                Nenhum conteúdo encontrado. Tente pesquisar por outro termo.
+            </p>
         </div>
     </main>
 
@@ -72,12 +71,12 @@
         <div class="container">
             <h2>Sobre o Criador</h2>
             <div class="about-content">
-                <!-- PERSONALIZE AQUI: Troque a imagem e o texto -->
-                <img src="https://via.placeholder.com/150" alt="Foto do Dono do Site" class="profile-pic">
+                <!-- IMAGEM E TEXTO PERSONALIZADOS -->
+                <img src="png/perfilmine.png" alt="Foto do CALiXTO" class="profile-pic">
                 <div class="about-text">
-                    <h3>Olá, eu sou [Seu Nome]!</h3>
+                    <h3>Olá, eu sou CALiXTO!</h3>
                     <p>
-                        Seja bem-vindo(a) à minha biblioteca de addons! Sou um apaixonado por [Jogo, ex: Minecraft] e adoro criar conteúdo para a comunidade. Este site é o lugar onde eu compartilho minhas criações com vocês. Espero que gostem e que os addons melhorem sua gameplay!
+                        Seja bem-vindo(a) à minha biblioteca de conteúdo! Sou um apaixonado por Minecraft e eu amo criar conteúdo para a comunidade. Este site é o lugar onde eu compartilho minhas criações com vocês. Espero que gostem e que os addons melhorem sua gameplay!
                     </p>
                     <div class="social-links">
                         <a href="#" target="_blank" title="Meu YouTube"><i class="fa-brands fa-youtube"></i></a>
@@ -92,12 +91,12 @@
     <!-- Rodapé -->
     <footer class="main-footer">
         <div class="container">
-            <p>© 2024 [Seu Nome ou Nome do Site]. Todos os direitos reservados.</p>
+            <p>© 2024 CALiXTO. Todos os direitos reservados.</p>
             <p>Criado com ❤️ para a comunidade.</p>
         </div>
     </footer>
 
-    <!-- Modal de Detalhes do Addon (inicialmente oculto) -->
+    <!-- Modal de Detalhes (inicialmente oculto) -->
     <div id="addonModal" class="modal">
         <div class="modal-content">
             <span class="close-button">×</span>
