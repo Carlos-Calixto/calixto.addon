@@ -15,7 +15,7 @@ const addons = [
     },
     {
         name: "More Tools",
-        image: "morettools.png",
+        image: "morettols.png",
         link: "https://COLOQUE-O-LINK-DO-MORE-TOOLS.COM", 
         description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
         version: "2.5.1",
