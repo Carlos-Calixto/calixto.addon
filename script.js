@@ -5,19 +5,17 @@ const addons = [
     {
         name: "Balls Addon",
         image: "ballsaddon.png",
-        link: "https://COLOQUE-O-LINK-DO-ADDON-AQUI.COM", // <-- TROQUE ESTE LINK!
-        // --- NOVAS INFORMAÇÕES ---
+        link: "https://COLOQUE-O-LINK-DO-ADDON-AQUI.COM",
         description: "Este addon adiciona várias bolas esportivas ao jogo, como futebol, basquete e vôlei, cada uma com físicas e interações únicas.",
         version: "1.2.0",
-        game_version: "1.20+", // Versão do jogo compatível
+        game_version: "1.20+",
         creator: "Seu Nome",
-        category: "Itens" // Categorias: "Criaturas", "Itens", "UI", etc.
+        category: "Itens"
     },
     {
         name: "More Tools",
         image: "morettols.png",
-        link: "https://COLOQUE-O-LINK-DESTE-OUTRO-ADDON-AQUI.COM", // <-- TROQUE ESTE LINK!
-        // --- NOVAS INFORMAÇÕES ---
+        link: "https://COLOQUE-O-LINK-DESTE-OUTRO-ADDON-AQUI.COM",
         description: "Expanda seu arsenal com mais de 20 novas ferramentas feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
         version: "2.5.1",
         game_version: "1.19.4 - 1.20.1",
@@ -26,16 +24,24 @@ const addons = [
     },
     {
         name: "Dragões Lendários",
-        image: "dragon_placeholder.png", // Crie uma imagem para este addon
+        image: "dragon_placeholder.png",
         link: "https://LINK-DO-ADDON-DRAGAO.COM",
-        // --- NOVAS INFORMAÇÕES ---
         description: "Adiciona 5 tipos de dragões majestosos que podem ser domados e montados. Cada dragão possui habilidades de fogo, gelo ou veneno.",
         version: "3.0.0",
         game_version: "1.20.1+",
         creator: "Seu Nome",
-        category: "Criaturas" 
+        category: "Criaturas"
+    },
+    {
+        name: "Interface Melhorada",
+        image: "ui_placeholder.png", // Crie uma imagem para este addon
+        link: "https://LINK-DO-ADDON-UI.COM",
+        description: "Renova completamente a interface do inventário, da hotbar e dos menus, com um design mais limpo e moderno.",
+        version: "1.0.0",
+        game_version: "1.20+",
+        creator: "Seu Nome",
+        category: "UI"
     }
-    // Adicione mais addons aqui seguindo o mesmo modelo
 ];
 // =======================================================================
 // FIM DA ÁREA DE CONFIGURAÇÃO - O IDEAL É NÃO ALTERAR O CÓDIGO ABAIXO
@@ -43,6 +49,7 @@ const addons = [
 
 // --- ELEMENTOS DO DOM ---
 const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
 const resultsContainer = document.getElementById('resultsContainer');
 const notFoundMessage = document.getElementById('notFoundMessage');
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -50,34 +57,25 @@ const modal = document.getElementById('addonModal');
 const modalBody = document.getElementById('modalBody');
 const closeModalButton = document.querySelector('.close-button');
 
-let currentCategory = 'all'; // Categoria selecionada no momento
+let currentCategory = 'all';
 
 // --- FUNÇÕES ---
 
-// Função principal que exibe os addons
-function displayResults(query = '') {
+// Função que ATUALIZA A GRADE PRINCIPAL de addons
+function displayResultsInGrid(query = '') {
     resultsContainer.innerHTML = '';
     const normalizedQuery = query.toLowerCase().trim();
 
-    // 1. Filtra por categoria, depois por pesquisa
     const filteredAddons = addons.filter(addon => {
         const matchesCategory = currentCategory === 'all' || addon.category === currentCategory;
         const matchesSearch = addon.name.toLowerCase().includes(normalizedQuery);
         return matchesCategory && matchesSearch;
     });
 
-    // Exibe mensagem se não encontrar nada
-    if (filteredAddons.length === 0) {
-        notFoundMessage.classList.remove('hidden');
-    } else {
-        notFoundMessage.classList.add('hidden');
-    }
+    notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
 
-    // Cria os cards dos addons
-    filteredAddons.forEach((addon, index) => {
-        // Encontra o índice original do addon para o modal funcionar corretamente
+    filteredAddons.forEach(addon => {
         const originalIndex = addons.findIndex(a => a.name === addon.name);
-      
         const addonCardHTML = `
             <div class="result-item" data-index="${originalIndex}">
                 <img src="png/${addon.image}" alt="Imagem do addon ${addon.name}">
@@ -91,11 +89,45 @@ function displayResults(query = '') {
         resultsContainer.innerHTML += addonCardHTML;
     });
 
-    // Adiciona o listener para os botões "Ver Detalhes" DEPOIS de criá-los
     addDetailButtonListeners();
 }
 
-// Função para abrir o Modal com as informações do addon
+// NOVA FUNÇÃO: Mostra o dropdown com sugestões de busca
+function showSearchSuggestions(query) {
+    searchDropdown.innerHTML = '';
+    if (!query) {
+        searchDropdown.classList.remove('visible');
+        return;
+    }
+
+    const normalizedQuery = query.toLowerCase().trim();
+    const filteredAddons = addons.filter(addon => addon.name.toLowerCase().includes(normalizedQuery));
+
+    if (filteredAddons.length > 0) {
+        filteredAddons.forEach(addon => {
+            const originalIndex = addons.findIndex(a => a.name === addon.name);
+            const suggestionItem = document.createElement('a');
+            suggestionItem.href = '#';
+            suggestionItem.className = 'dropdown-item';
+            suggestionItem.textContent = addon.name;
+            suggestionItem.dataset.index = originalIndex;
+            
+            suggestionItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(originalIndex);
+                searchInput.value = addon.name;
+                searchDropdown.classList.remove('visible');
+            });
+
+            searchDropdown.appendChild(suggestionItem);
+        });
+        searchDropdown.classList.add('visible');
+    } else {
+        searchDropdown.classList.remove('visible');
+    }
+}
+
+// Função para abrir o Modal
 function openModal(index) {
     const addon = addons[index];
     modalBody.innerHTML = `
@@ -114,7 +146,7 @@ function openModal(index) {
             </a>
         </div>
     `;
-    modal.style.display = 'flex'; // Exibe o modal
+    modal.style.display = 'flex';
 }
 
 // Função para fechar o Modal
@@ -124,30 +156,44 @@ function closeModal() {
 
 // --- EVENT LISTENERS ---
 
-// Listener para a barra de pesquisa
+// Listener para a barra de pesquisa (mostra SUGESTÕES)
 searchInput.addEventListener('input', () => {
-    displayResults(searchInput.value);
+    showSearchSuggestions(searchInput.value);
+});
+
+// Listener para a tecla "Enter" (ATUALIZA A GRADE)
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Impede o formulário de ser enviado (caso esteja em um)
+        displayResultsInGrid(searchInput.value);
+        searchDropdown.classList.remove('visible');
+    }
+});
+
+// Listener para fechar o dropdown ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+        searchDropdown.classList.remove('visible');
+    }
 });
 
 // Listeners para os botões de filtro de categoria
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove a classe 'active' de todos e adiciona no clicado
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         
-        // Atualiza a categoria e renderiza os resultados
         currentCategory = button.getAttribute('data-category');
-        displayResults(searchInput.value);
+        searchInput.value = ''; // Limpa a busca ao trocar de categoria
+        searchDropdown.classList.remove('visible');
+        displayResultsInGrid(); // Atualiza a grade com a nova categoria
     });
 });
 
-// Listener para os botões "Ver Detalhes" (usando delegação de evento)
+// Listener para os botões "Ver Detalhes"
 function addDetailButtonListeners() {
-    const detailButtons = document.querySelectorAll('.details-btn');
-    detailButtons.forEach(button => {
+    document.querySelectorAll('.details-btn').forEach(button => {
         button.addEventListener('click', (event) => {
-            // Pega o 'data-index' do card pai do botão
             const card = event.target.closest('.result-item');
             const addonIndex = card.getAttribute('data-index');
             openModal(addonIndex);
@@ -157,19 +203,10 @@ function addDetailButtonListeners() {
 
 // Listeners para fechar o modal
 closeModalButton.addEventListener('click', closeModal);
-window.addEventListener('click', (event) => {
-    if (event.target === modal) { // Se clicar fora do conteúdo do modal
-        closeModal();
-    }
-});
-window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') { // Se pressionar a tecla ESC
-        closeModal();
-    }
-});
-
+window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
 // Exibe todos os addons ao carregar a página
 window.addEventListener('load', () => {
-    displayResults();
+    displayResultsInGrid();
 });
