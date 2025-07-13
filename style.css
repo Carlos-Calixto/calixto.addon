@@ -1,18 +1,3 @@
-/* ================================================= */
-/*          NOVO TEMA - HARMONIZADO COM O BANNER     */
-/* ================================================= */
-
-/* --- Variáveis de Cores para Controle Total --- */
-:root {
-    --bg-color: #100f14; /* Um preto com um leve tom de roxo escuro */
-    --card-bg: rgba(30, 25, 40, 0.2); /* Fundo dos cards com tom roxo e vidro */
-    --card-border: rgba(157, 120, 255, 0.15); /* Borda sutil com cor do banner */
-    --accent-color: #9D78FF; /* Um roxo vibrante, tirado do banner */
-    --accent-glow: rgba(157, 120, 255, 0.4); /* Brilho para o roxo */
-    --text-color: #EAEAEA;
-    --text-secondary: #a0a0a0;
-}
-
 /* Reset Básico e Estilos Globais */
 * {
     margin: 0;
@@ -22,8 +7,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #0c0c0e;
+    color: #e0e0e0;
     line-height: 1.6;
 }
 
@@ -33,7 +18,7 @@ body {
     padding: 0 2rem;
 }
 
-/* --- CABEÇALHO COM EFEITO E CORES NOVAS --- */
+/* --- CABEÇALHO COM GIF (Versão Corrigida) --- */
 .banner-header {
     position: relative;
     height: 60vh;
@@ -51,10 +36,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    /* EFEITO NO BANNER: Aumenta um pouco a cor e o contraste para ficar mais vivo */
-    filter: saturate(1.1) contrast(1.1);
+    object-fit: cover; /* ESSENCIAL: Faz o GIF cobrir o espaço sem distorcer */
+    z-index: 1; /* Fica no fundo */
 }
 
 .header-overlay {
@@ -63,38 +46,30 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* EFEITO DE GRADIENTE: Faz o banner se mesclar suavemente com o fundo da página */
-    background: linear-gradient(to top, var(--bg-color) 5%, transparent 50%);
-    z-index: 2;
+    background: rgba(0, 0, 0, 0.5); /* Escurece o fundo para legibilidade do texto */
+    z-index: 2; /* Fica entre o GIF e o conteúdo */
 }
 
 .header-content {
     position: relative;
-    z-index: 3;
+    z-index: 3; /* Fica na frente de tudo */
 }
 
-/* Efeito de Gradiente no Título Principal */
 .header-content h1 {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    /* Cor do título agora usa um gradiente que combina com o banner */
-    background: linear-gradient(120deg, #E6A8FF, #B391FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
 }
 
 .header-content p {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: #d0d0d0;
     margin-bottom: 2rem;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* --- CAIXA DE PESQUISA COM CORES NOVAS --- */
+/* --- CAIXA DE PESQUISA (Estilo Vidro) --- */
 .search-box {
     width: 100%;
     max-width: 600px;
@@ -106,26 +81,26 @@ body {
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
     border-radius: 50px;
-    border: 1px solid var(--card-border);
-    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
     outline: none;
     transition: all 0.3s ease;
     
-    background: rgba(30, 25, 40, 0.5); /* Fundo mais escuro e roxo */
+    background: rgba(255, 255, 255, 0.1);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
 #searchInput::placeholder {
-    color: var(--text-secondary);
+    color: #ccc;
 }
 
 #searchInput:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-glow);
+    border-color: rgba(0, 195, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 195, 255, 0.5);
 }
 
-/* --- CONTEÚDO PRINCIPAL COM CORES NOVAS --- */
+/* --- CONTEÚDO PRINCIPAL (GRID DE ADDONS) --- */
 .main-content {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -146,9 +121,9 @@ body {
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 1px solid var(--card-border);
-    background: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
@@ -156,7 +131,7 @@ body {
 .result-item:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    border-color: var(--accent-color); /* Borda fica roxa ao passar o mouse */
+    border-color: rgba(0, 195, 255, 0.5);
 }
 
 .result-item img {
@@ -170,14 +145,12 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     padding: 1.5rem 1rem;
-    color: var(--text-color);
 }
 
-/* --- MENSAGENS E RODAPÉ --- */
 #notFoundMessage {
     text-align: center;
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: #888;
     margin-top: 3rem;
 }
 
@@ -188,7 +161,8 @@ body {
 footer {
     text-align: center;
     padding: 1rem;
-    border-top: 1px solid rgba(157, 120, 255, 0.1); /* Borda do rodapé sutil */
+    color: #666;
+    border-top: 1px solid #2c2c2c;
 }
 
 /* Responsividade */
