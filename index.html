@@ -3,42 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Addons</title>
+    <title>Biblioteca de Addons | Por [Seu Nome]</title>
+
+    <!-- Estilo CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
 
-    <!-- Cabeçalho com o GIF de Fundo (versão corrigida) -->
+    <!-- Cabeçalho -->
     <header class="banner-header">
         <img src="png/introbanner.gif" alt="Banner animado do site" class="background-gif">
         <div class="header-overlay"></div>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="#" class="logo">[Seu Logo ou Nome]</a>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#addons">Addons</a></li>
+                    <li><a href="#sobre-mim">Sobre Mim</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="header-content">
-            <h1>Biblioteca de Addons</h1>
-            <p>Encontre o addon que você procura e baixe com um clique.</p>
+            <h1>Sua Biblioteca de Addons</h1>
+            <p>Encontre, explore e baixe os melhores addons com um clique.</p>
             <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search" id="searchInput" placeholder="Digite o nome do addon...">
             </div>
         </div>
     </header>
 
-    <!-- Conteúdo Principal com os Addons -->
-    <main class="main-content">
+    <!-- Conteúdo Principal -->
+    <main id="addons" class="main-content">
         <div class="container">
+            <!-- Filtros de Categoria -->
+            <div class="filter-container">
+                <h2>Explorar Categorias</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Todos</button>
+                    <button class="filter-btn" data-category="Criaturas">Criaturas</button>
+                    <button class="filter-btn" data-category="Itens">Itens</button>
+                    <button class="filter-btn" data-category="UI">UI/Interface</button>
+                    <!-- Adicione mais botões para novas categorias aqui -->
+                </div>
+            </div>
+
+            <!-- Grid de Addons -->
             <div id="resultsContainer" class="results-grid">
                 <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
             </div>
             <p id="notFoundMessage" class="hidden">
-                Nenhum addon encontrado com esse nome. Tente pesquisar por outro termo.
-            </p>
+                Nenhum addon encontrado. Tente pesquisar por outro termo ou limpar os filtros.
+            p>
         </div>
     </main>
 
-    <footer>
-        <!-- Rodapé vazio -->
+    <!-- Seção Sobre Mim -->
+    <section id="sobre-mim" class="about-section">
+        <div class="container">
+            <h2>Sobre o Criador</h2>
+            <div class="about-content">
+                <!-- PERSONALIZE AQUI: Troque a imagem e o texto -->
+                <img src="https://via.placeholder.com/150" alt="Foto do Dono do Site" class="profile-pic">
+                <div class="about-text">
+                    <h3>Olá, eu sou [Seu Nome]!</h3>
+                    <p>
+                        Seja bem-vindo(a) à minha biblioteca de addons! Sou um apaixonado por [Jogo, ex: Minecraft] e adoro criar conteúdo para a comunidade. Este site é o lugar onde eu compartilho minhas criações com vocês. Espero que gostem e que os addons melhorem sua gameplay!
+                    </p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" title="Meu YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" target="_blank" title="Meu Discord"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" target="_blank" title="Meu Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2024 [Seu Nome ou Nome do Site]. Todos os direitos reservados.</p>
+            <p>Criado com ❤️ para a comunidade.</p>
+        </div>
     </footer>
+
+    <!-- Modal de Detalhes do Addon (inicialmente oculto) -->
+    <div id="addonModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div id="modalBody">
+                <!-- Conteúdo do modal será preenchido pelo JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
