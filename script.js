@@ -9,9 +9,9 @@ const addons = [
         description: "Este addon adiciona várias bolas esportivas ao jogo, como beisebol, futebol e vôlei, cada uma com físicas e interações únicas.",
         version: "1.1.0",
         game_version: "Bedrock 1.20+",
-        creator: "CALiXTO",
+        creator: "Daniye",
         category: "Addons",      // Categoria principal para o filtro
-        displayTag: "Itens"      // Etiqueta que aparece no card
+        displayTag: "Addons"      // Etiqueta que aparece no card
     },
     {
         name: "More Tools",
@@ -20,32 +20,10 @@ const addons = [
         description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
         version: "2.5.1",
         game_version: "Bedrock 1.20+",
-        creator: "CALiXTO",
+        creator: "SorYPMod",
         category: "Addons",      // Categoria principal para o filtro
-        displayTag: "Itens"      // Etiqueta que aparece no card
+        displayTag: "Addons"      // Etiqueta que aparece no card
     },
-    {
-        name: "Biomas Aprimorados Mod",
-        image: "biomes_placeholder.png", // Exemplo de Mod
-        link: "https://LINK-DO-SEU-MOD.COM", 
-        description: "Este mod para a versão Java expande o mundo com mais de 30 novos biomas deslumbrantes, cheios de novas plantas e árvores.",
-        version: "4.0.5",
-        game_version: "Java 1.19.2",
-        creator: "CALiXTO",
-        category: "Mods",
-        displayTag: "Mundo"
-    },
-    {
-        name: "CALIX Shader (Java)",
-        image: "shader_java_placeholder.png", // Exemplo de Shader
-        link: "https://LINK-DO-SEU-SHADER-JAVA.COM", 
-        description: "Shader focado em performance para Minecraft Java Edition. Traz sombras realistas, água reflexiva e céu dinâmico sem pesar no seu PC.",
-        version: "1.3",
-        game_version: "Java 1.20.1 (Optifine/Iris)",
-        creator: "CALiXTO",
-        category: "Shaders",
-        displayTag: "Java"
-    }
     // Adicione mais addons, mods ou shaders aqui seguindo o mesmo modelo
 ];
 // =======================================================================
