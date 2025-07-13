@@ -3,44 +3,48 @@
 // =======================================================================
 const addons = [
     {
-        name: "Dragões Elementais Addon",
-        image: "dragon_placeholder.png",
-        link: "https://LINK-DO-SEU-ADDON.COM", 
-        description: "Um addon para Minecraft Bedrock que adiciona 5 tipos de dragões que podem ser domados. Ideal para exploração e combate.",
-        version: "2.1.0",
+        name: "Balls Addon",
+        image: "ballsaddon.png", // Imagem do seu primeiro addon
+        link: "https://COLOQUE-O-LINK-DO-BALLS-ADDON.COM", 
+        description: "Este addon adiciona várias bolas esportivas ao jogo, como beisebol, futebol e vôlei, cada uma com físicas e interações únicas.",
+        version: "1.1.0",
         game_version: "Bedrock 1.20+",
         creator: "CALiXTO",
-        category: "Addons" // Categorias: "Addons", "Mods", "Shaders"
+        category: "Addons",      // Categoria principal para o filtro
+        displayTag: "Itens"      // Etiqueta que aparece no card
+    },
+    {
+        name: "More Tools",
+        image: "moretools.png", // Imagem do seu segundo addon
+        link: "https://COLOQUE-O-LINK-DO-MORE-TOOLS.COM", 
+        description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
+        version: "2.5.1",
+        game_version: "Bedrock 1.20+",
+        creator: "CALiXTO",
+        category: "Addons",      // Categoria principal para o filtro
+        displayTag: "Itens"      // Etiqueta que aparece no card
     },
     {
         name: "Biomas Aprimorados Mod",
-        image: "biomes_placeholder.png",
+        image: "biomes_placeholder.png", // Exemplo de Mod
         link: "https://LINK-DO-SEU-MOD.COM", 
         description: "Este mod para a versão Java expande o mundo com mais de 30 novos biomas deslumbrantes, cheios de novas plantas e árvores.",
         version: "4.0.5",
         game_version: "Java 1.19.2",
         creator: "CALiXTO",
-        category: "Mods" 
+        category: "Mods",
+        displayTag: "Mundo"
     },
     {
         name: "CALIX Shader (Java)",
-        image: "shader_java_placeholder.png",
+        image: "shader_java_placeholder.png", // Exemplo de Shader
         link: "https://LINK-DO-SEU-SHADER-JAVA.COM", 
         description: "Shader focado em performance para Minecraft Java Edition. Traz sombras realistas, água reflexiva e céu dinâmico sem pesar no seu PC.",
         version: "1.3",
         game_version: "Java 1.20.1 (Optifine/Iris)",
         creator: "CALiXTO",
-        category: "Shaders"
-    },
-    {
-        name: "Luminous Shader (Bedrock)",
-        image: "shader_bedrock_placeholder.png",
-        link: "https://LINK-DO-SEU-SHADER-BEDROCK.COM", 
-        description: "Um shader vibrante para a versão Bedrock (Render Dragon) que melhora as cores, a iluminação e adiciona um leve movimento às folhas.",
-        version: "2.5",
-        game_version: "Bedrock 1.20+ (Windows/Mobile)",
-        creator: "CALiXTO",
-        category: "Shaders"
+        category: "Shaders",
+        displayTag: "Java"
     }
     // Adicione mais addons, mods ou shaders aqui seguindo o mesmo modelo
 ];
@@ -57,45 +61,33 @@ const modal = document.getElementById('addonModal');
 const modalBody = document.getElementById('modalBody');
 const closeModalButton = document.querySelector('.close-button');
 
-let currentCategory = 'all'; // Categoria selecionada no momento
+let currentCategory = 'all'; 
 
 // --- FUNÇÕES ---
 
-// Função principal que exibe os resultados
 function displayResults(query = '') {
     resultsContainer.innerHTML = '';
     const normalizedQuery = query.toLowerCase().trim();
 
-    // 1. Filtra por categoria, depois por pesquisa
     const filteredAddons = addons.filter(addon => {
         const matchesCategory = currentCategory === 'all' || addon.category === currentCategory;
-
-        // CRITÉRIO DE PESQUISA AMPLIADO
-        const searchableText = `
-            ${addon.name} 
-            ${addon.category} 
-            ${addon.description} 
-            ${addon.game_version}`
-            .toLowerCase();
-        
+        const searchableText = `${addon.name} ${addon.category} ${addon.displayTag} ${addon.description} ${addon.game_version}`.toLowerCase();
         const matchesSearch = searchableText.includes(normalizedQuery);
-        
         return matchesCategory && matchesSearch;
     });
 
-    // Exibe mensagem se não encontrar nada
     notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
 
-    // Cria os cards dos addons
     filteredAddons.forEach(addon => {
         const originalIndex = addons.findIndex(a => a.name === addon.name);
-      
+        
+        // MUDANÇA AQUI: Usando 'addon.displayTag' para a etiqueta visual
         const addonCardHTML = `
             <div class="result-item" data-index="${originalIndex}">
                 <img src="png/${addon.image}" alt="Imagem do ${addon.name}">
                 <div class="item-content">
                     <h3>${addon.name}</h3>
-                    <span class="category-tag">${addon.category}</span>
+                    <span class="category-tag">${addon.displayTag}</span>
                     <button class="details-btn">Ver Detalhes</button>
                 </div>
             </div>
@@ -106,7 +98,6 @@ function displayResults(query = '') {
     addDetailButtonListeners();
 }
 
-// Função para abrir o Modal com as informações
 function openModal(index) {
     const addon = addons[index];
     modalBody.innerHTML = `
@@ -128,33 +119,24 @@ function openModal(index) {
     modal.style.display = 'flex';
 }
 
-// Função para fechar o Modal
 function closeModal() {
     modal.style.display = 'none';
 }
 
 // --- EVENT LISTENERS ---
+searchInput.addEventListener('input', () => displayResults(searchInput.value));
 
-// Listener para a barra de pesquisa
-searchInput.addEventListener('input', () => {
-    displayResults(searchInput.value);
-});
-
-// Listeners para os botões de filtro de categoria
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        
         currentCategory = button.getAttribute('data-category');
         displayResults(searchInput.value);
     });
 });
 
-// Adiciona listener aos botões "Ver Detalhes"
 function addDetailButtonListeners() {
-    const detailButtons = document.querySelectorAll('.details-btn');
-    detailButtons.forEach(button => {
+    document.querySelectorAll('.details-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const card = event.target.closest('.result-item');
             const addonIndex = card.getAttribute('data-index');
@@ -163,21 +145,12 @@ function addDetailButtonListeners() {
     });
 }
 
-// Listeners para fechar o modal
 closeModalButton.addEventListener('click', closeModal);
 window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        closeModal();
-    }
+    if (event.target === modal) closeModal();
 });
 window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        closeModal();
-    }
+    if (event.key === 'Escape') closeModal();
 });
 
-
-// Exibe todos os itens ao carregar a página
-window.addEventListener('load', () => {
-    displayResults();
-});
+window.addEventListener('load', () => displayResults());
