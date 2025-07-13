@@ -4,27 +4,26 @@
 const addons = [
     {
         name: "Balls Addon",
-        image: "ballsaddon.png", // Imagem do seu primeiro addon
+        image: "ballsaddon.png",
         link: "https://COLOQUE-O-LINK-DO-BALLS-ADDON.COM", 
         description: "Este addon adiciona várias bolas esportivas ao jogo, como beisebol, futebol e vôlei, cada uma com físicas e interações únicas.",
         version: "1.1.0",
         game_version: "Bedrock 1.20+",
         creator: "Daniye",
-        category: "Addons",      // Categoria principal para o filtro
-        displayTag: "Addons"      // Etiqueta que aparece no card
+        category: "Addons",
+        displayTag: "Addons"
     },
     {
         name: "More Tools",
-        image: "morettols.png", // Imagem do seu segundo addon
+        image: "morettools.png",
         link: "https://COLOQUE-O-LINK-DO-MORE-TOOLS.COM", 
         description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
         version: "2.5.1",
         game_version: "Bedrock 1.20+",
         creator: "SorYPMod",
-        category: "Addons",      // Categoria principal para o filtro
-        displayTag: "Addons"      // Etiqueta que aparece no card
+        category: "Addons",
+        displayTag: "Addons"
     },
-    // Adicione mais addons, mods ou shaders aqui seguindo o mesmo modelo
 ];
 // =======================================================================
 // FIM DA ÁREA DE CONFIGURAÇÃO - O IDEAL É NÃO ALTERAR O CÓDIGO ABAIXO
@@ -57,25 +56,24 @@ function displayResults(query = '') {
     notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
 
     filteredAddons.forEach(addon => {
-        const originalIndex = addons.findIndex(a => a.name === addon.name);
-        
-        // MUDANÇA AQUI: Usando 'addon.displayTag' para a etiqueta visual
         const addonCardHTML = `
-            <div class="result-item" data-index="${originalIndex}">
+            <div class="result-item">
                 <img src="png/${addon.image}" alt="Imagem do ${addon.name}">
                 <div class="item-content">
                     <h3>${addon.name}</h3>
                     <span class="category-tag">${addon.displayTag}</span>
-                    <button class="details-btn">Ver Detalhes</button>
+                    <a href="${addon.link}" target="_blank" rel="noopener noreferrer" class="download-btn">
+                        <i class="fa-solid fa-download"></i> Baixar Agora
+                    </a>
                 </div>
             </div>
         `;
         resultsContainer.innerHTML += addonCardHTML;
     });
-
-    addDetailButtonListeners();
 }
 
+// O modal ainda existe, mas não é mais aberto a partir dos cards.
+// Você pode reativar essa funcionalidade no futuro se quiser.
 function openModal(index) {
     const addon = addons[index];
     modalBody.innerHTML = `
@@ -113,16 +111,10 @@ filterButtons.forEach(button => {
     });
 });
 
-function addDetailButtonListeners() {
-    document.querySelectorAll('.details-btn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const card = event.target.closest('.result-item');
-            const addonIndex = card.getAttribute('data-index');
-            openModal(addonIndex);
-        });
-    });
-}
+// A função que adicionava o evento de clique para os botões de detalhes foi removida
+// pois os botões agora são links de download direto.
 
+// Eventos para fechar o modal (mantidos caso o modal seja usado de outra forma)
 closeModalButton.addEventListener('click', closeModal);
 window.addEventListener('click', (event) => {
     if (event.target === modal) closeModal();
@@ -131,4 +123,5 @@ window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeModal();
 });
 
+// Exibe os resultados iniciais quando a página carrega
 window.addEventListener('load', () => displayResults());
