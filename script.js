@@ -7,29 +7,14 @@
 // - link: O link para onde o usuário será levado ao clicar.
 const addons = [
     {
-        name: "Super UI Customizer",
-        image: "addon1.png",
-        link: "https://www.curseforge.com/wow/addons/super-ui"
+        name: "Balls Addon",
+        image: "ballsaddon.png",
+        link: "https://COLOQUE-O-LINK-DO-ADDON-AQUI.COM" // <-- TROQUE ESTE LINK!
     },
     {
-        name: "Quest Helper Avançado",
-        image: "addon2.png",
-        link: "https://www.curseforge.com/wow/addons/questie"
-    },
-    {
-        name: "Damage Meter Pro",
-        image: "addon3.png",
-        link: "https://www.curseforge.com/wow/addons/details"
-    },
-    {
-        name: "Inventário Inteligente",
-        image: "addon4.png", // Imagem de exemplo
-        link: "https://www.curseforge.com/wow/addons/bagnon"
-    },
-    {
-        name: "Mapa do Mundo Melhorado",
-        image: "addon5.png", // Imagem de exemplo
-        link: "https://www.curseforge.com/wow/addons/world-quest-tracker"
+        name: "More Tols", // Eu supus que o nome seria "More Tools", você pode ajustar se quiser
+        image: "morettols.png",
+        link: "https://COLOQUE-O-LINK-DESTE-OUTRO-ADDON-AQUI.COM" // <-- TROQUE ESTE LINK!
     },
     // Adicione quantos addons quiser aqui, seguindo o mesmo formato.
     // {
@@ -39,7 +24,7 @@ const addons = [
     // },
 ];
 // =======================================================================
-// FIM DA ÁREA DE CONFIGURAÇÃO
+// FIM DA ÁREA DE CONFIGURAÇÃO - NÃO ALTERE O CÓDIGO ABAIXO
 // =======================================================================
 
 
