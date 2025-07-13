@@ -98,7 +98,6 @@ body {
     color: #00c3ff;
 }
 
-
 .header-content {
     position: relative;
     z-index: 3;
@@ -119,8 +118,9 @@ body {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
+/* --- CAIXA DE PESQUISA E DROPDOWN --- */
 .search-box {
-    position: relative;
+    position: relative; /* Essencial para posicionar o dropdown */
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
@@ -136,7 +136,7 @@ body {
 
 #searchInput {
     width: 100%;
-    padding: 1rem 1.5rem 1rem 3.5rem; /* Espaço para o ícone */
+    padding: 1rem 1.5rem 1rem 3.5rem;
     font-size: 1.1rem;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -151,6 +151,43 @@ body {
 #searchInput:focus {
     border-color: rgba(0, 195, 255, 0.8);
     box-shadow: 0 0 20px rgba(0, 195, 255, 0.5);
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 110%; /* Posiciona abaixo da barra de pesquisa */
+    left: 0;
+    width: 100%;
+    background: #1a1a1d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.search-dropdown.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background-color: #00c3ff;
+    color: #0c0c0e;
 }
 
 /* --- CONTEÚDO PRINCIPAL --- */
@@ -230,7 +267,7 @@ body {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Faz este container crescer para preencher o espaço */
+    flex-grow: 1;
     text-align: left;
 }
 .item-content h3 {
@@ -245,12 +282,12 @@ body {
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 600;
-    align-self: flex-start; /* Alinha a tag no início */
+    align-self: flex-start;
     margin-bottom: 1rem;
 }
 
 .details-btn {
-    margin-top: auto; /* Empurra o botão para o final do card */
+    margin-top: auto;
     padding: 0.8rem 1rem;
     background-color: #00c3ff;
     color: #0c0c0e;
