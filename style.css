@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0c0c0e; /* Um preto um pouco mais suave */
+    background-color: #0c0c0e;
     color: #e0e0e0;
     line-height: 1.6;
 }
@@ -18,28 +18,22 @@ body {
     padding: 0 2rem;
 }
 
-/* --- CABEÇALHO COM VÍDEO --- */
-.video-header {
+/* --- CABEÇALHO COM GIF --- */
+.banner-header {
     position: relative;
-    height: 60vh; /* Ocupa 60% da altura da tela */
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     text-align: center;
     color: #fff;
-}
+    overflow: hidden;
 
-.background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2; /* Fica atrás de tudo */
+    /* Configuração do GIF como fundo */
+    background-image: url('png/introbanner.gif');
+    background-size: cover; /* Cobre todo o espaço */
+    background-position: center; /* Centraliza o GIF */
+    background-repeat: no-repeat; /* Evita repetição */
 }
 
 .header-overlay {
@@ -48,8 +42,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Escurece o vídeo para legibilidade */
-    z-index: -1;
+    background: rgba(0, 0, 0, 0.5); /* Escurece o fundo para legibilidade do texto */
+    z-index: 1; /* Fica acima do GIF e abaixo do conteúdo */
+}
+
+.header-content {
+    position: relative; /* Garante que o conteúdo fique na frente do overlay */
+    z-index: 2;
 }
 
 .header-content h1 {
@@ -77,13 +76,12 @@ body {
     width: 100%;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    border-radius: 50px; /* Bordas arredondadas */
+    border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
     outline: none;
     transition: all 0.3s ease;
     
-    /* EFEITO DE VIDRO */
     background: rgba(255, 255, 255, 0.1);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -100,7 +98,7 @@ body {
 
 /* --- CONTEÚDO PRINCIPAL (GRID DE ADDONS) --- */
 .main-content {
-    padding-top: 4rem; /* Espaço abaixo do banner */
+    padding-top: 4rem;
     padding-bottom: 4rem;
 }
 
@@ -121,8 +119,6 @@ body {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* EFEITO DE VIDRO */
     background: rgba(255, 255, 255, 0.05);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -147,7 +143,6 @@ body {
     padding: 1.5rem 1rem;
 }
 
-/* Mensagem de "Não Encontrado" e Rodapé */
 #notFoundMessage {
     text-align: center;
     font-size: 1.2rem;
@@ -161,7 +156,7 @@ body {
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem; /* Reduzi o padding já que está vazio */
     color: #666;
     border-top: 1px solid #2c2c2c;
 }
@@ -174,7 +169,7 @@ footer {
     .header-content p {
         font-size: 1rem;
     }
-    .video-header {
+    .banner-header {
         height: 50vh;
     }
 }
