@@ -1,41 +1,48 @@
 // =======================================================================
-// ÁREA DE CONFIGURAÇÃO - ADICIONE E PERSONALIZE SEUS ADDONS AQUI!
+// ÁREA DE CONFIGURAÇÃO - ADICIONE E PERSONALIZE SEU CONTEÚDO AQUI!
 // =======================================================================
 const addons = [
     {
-        name: "Balls Addon",
-        image: "ballsaddon.png",
-        link: "https://COLOQUE-O-LINK-DO-ADDON-AQUI.COM", // <-- TROQUE ESTE LINK!
-        // --- NOVAS INFORMAÇÕES ---
-        description: "Este addon adiciona várias bolas esportivas ao jogo, como futebol, basquete e vôlei, cada uma com físicas e interações únicas.",
-        version: "1.2.0",
-        game_version: "1.20+", // Versão do jogo compatível
-        creator: "Seu Nome",
-        category: "Itens" // Categorias: "Criaturas", "Itens", "UI", etc.
+        name: "Dragões Elementais Addon",
+        image: "dragon_placeholder.png",
+        link: "https://LINK-DO-SEU-ADDON.COM", 
+        description: "Um addon para Minecraft Bedrock que adiciona 5 tipos de dragões que podem ser domados. Ideal para exploração e combate.",
+        version: "2.1.0",
+        game_version: "Bedrock 1.20+",
+        creator: "CALiXTO",
+        category: "Addons" // Categorias: "Addons", "Mods", "Shaders"
     },
     {
-        name: "More Tools",
-        image: "morettols.png",
-        link: "https://COLOQUE-O-LINK-DESTE-OUTRO-ADDON-AQUI.COM", // <-- TROQUE ESTE LINK!
-        // --- NOVAS INFORMAÇÕES ---
-        description: "Expanda seu arsenal com mais de 20 novas ferramentas feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
-        version: "2.5.1",
-        game_version: "1.19.4 - 1.20.1",
-        creator: "Outro Criador",
-        category: "Itens"
+        name: "Biomas Aprimorados Mod",
+        image: "biomes_placeholder.png",
+        link: "https://LINK-DO-SEU-MOD.COM", 
+        description: "Este mod para a versão Java expande o mundo com mais de 30 novos biomas deslumbrantes, cheios de novas plantas e árvores.",
+        version: "4.0.5",
+        game_version: "Java 1.19.2",
+        creator: "CALiXTO",
+        category: "Mods" 
     },
     {
-        name: "Dragões Lendários",
-        image: "dragon_placeholder.png", // Crie uma imagem para este addon
-        link: "https://LINK-DO-ADDON-DRAGAO.COM",
-        // --- NOVAS INFORMAÇÕES ---
-        description: "Adiciona 5 tipos de dragões majestosos que podem ser domados e montados. Cada dragão possui habilidades de fogo, gelo ou veneno.",
-        version: "3.0.0",
-        game_version: "1.20.1+",
-        creator: "Seu Nome",
-        category: "Criaturas" 
+        name: "CALIX Shader (Java)",
+        image: "shader_java_placeholder.png",
+        link: "https://LINK-DO-SEU-SHADER-JAVA.COM", 
+        description: "Shader focado em performance para Minecraft Java Edition. Traz sombras realistas, água reflexiva e céu dinâmico sem pesar no seu PC.",
+        version: "1.3",
+        game_version: "Java 1.20.1 (Optifine/Iris)",
+        creator: "CALiXTO",
+        category: "Shaders"
+    },
+    {
+        name: "Luminous Shader (Bedrock)",
+        image: "shader_bedrock_placeholder.png",
+        link: "https://LINK-DO-SEU-SHADER-BEDROCK.COM", 
+        description: "Um shader vibrante para a versão Bedrock (Render Dragon) que melhora as cores, a iluminação e adiciona um leve movimento às folhas.",
+        version: "2.5",
+        game_version: "Bedrock 1.20+ (Windows/Mobile)",
+        creator: "CALiXTO",
+        category: "Shaders"
     }
-    // Adicione mais addons aqui seguindo o mesmo modelo
+    // Adicione mais addons, mods ou shaders aqui seguindo o mesmo modelo
 ];
 // =======================================================================
 // FIM DA ÁREA DE CONFIGURAÇÃO - O IDEAL É NÃO ALTERAR O CÓDIGO ABAIXO
@@ -54,7 +61,7 @@ let currentCategory = 'all'; // Categoria selecionada no momento
 
 // --- FUNÇÕES ---
 
-// Função principal que exibe os addons
+// Função principal que exibe os resultados
 function displayResults(query = '') {
     resultsContainer.innerHTML = '';
     const normalizedQuery = query.toLowerCase().trim();
@@ -62,25 +69,30 @@ function displayResults(query = '') {
     // 1. Filtra por categoria, depois por pesquisa
     const filteredAddons = addons.filter(addon => {
         const matchesCategory = currentCategory === 'all' || addon.category === currentCategory;
-        const matchesSearch = addon.name.toLowerCase().includes(normalizedQuery);
+
+        // CRITÉRIO DE PESQUISA AMPLIADO
+        const searchableText = `
+            ${addon.name} 
+            ${addon.category} 
+            ${addon.description} 
+            ${addon.game_version}`
+            .toLowerCase();
+        
+        const matchesSearch = searchableText.includes(normalizedQuery);
+        
         return matchesCategory && matchesSearch;
     });
 
     // Exibe mensagem se não encontrar nada
-    if (filteredAddons.length === 0) {
-        notFoundMessage.classList.remove('hidden');
-    } else {
-        notFoundMessage.classList.add('hidden');
-    }
+    notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
 
     // Cria os cards dos addons
-    filteredAddons.forEach((addon, index) => {
-        // Encontra o índice original do addon para o modal funcionar corretamente
+    filteredAddons.forEach(addon => {
         const originalIndex = addons.findIndex(a => a.name === addon.name);
       
         const addonCardHTML = `
             <div class="result-item" data-index="${originalIndex}">
-                <img src="png/${addon.image}" alt="Imagem do addon ${addon.name}">
+                <img src="png/${addon.image}" alt="Imagem do ${addon.name}">
                 <div class="item-content">
                     <h3>${addon.name}</h3>
                     <span class="category-tag">${addon.category}</span>
@@ -91,11 +103,10 @@ function displayResults(query = '') {
         resultsContainer.innerHTML += addonCardHTML;
     });
 
-    // Adiciona o listener para os botões "Ver Detalhes" DEPOIS de criá-los
     addDetailButtonListeners();
 }
 
-// Função para abrir o Modal com as informações do addon
+// Função para abrir o Modal com as informações
 function openModal(index) {
     const addon = addons[index];
     modalBody.innerHTML = `
@@ -114,7 +125,7 @@ function openModal(index) {
             </a>
         </div>
     `;
-    modal.style.display = 'flex'; // Exibe o modal
+    modal.style.display = 'flex';
 }
 
 // Função para fechar o Modal
@@ -132,22 +143,19 @@ searchInput.addEventListener('input', () => {
 // Listeners para os botões de filtro de categoria
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove a classe 'active' de todos e adiciona no clicado
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         
-        // Atualiza a categoria e renderiza os resultados
         currentCategory = button.getAttribute('data-category');
         displayResults(searchInput.value);
     });
 });
 
-// Listener para os botões "Ver Detalhes" (usando delegação de evento)
+// Adiciona listener aos botões "Ver Detalhes"
 function addDetailButtonListeners() {
     const detailButtons = document.querySelectorAll('.details-btn');
     detailButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            // Pega o 'data-index' do card pai do botão
             const card = event.target.closest('.result-item');
             const addonIndex = card.getAttribute('data-index');
             openModal(addonIndex);
@@ -158,18 +166,18 @@ function addDetailButtonListeners() {
 // Listeners para fechar o modal
 closeModalButton.addEventListener('click', closeModal);
 window.addEventListener('click', (event) => {
-    if (event.target === modal) { // Se clicar fora do conteúdo do modal
+    if (event.target === modal) {
         closeModal();
     }
 });
 window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') { // Se pressionar a tecla ESC
+    if (event.key === 'Escape') {
         closeModal();
     }
 });
 
 
-// Exibe todos os addons ao carregar a página
+// Exibe todos os itens ao carregar a página
 window.addEventListener('load', () => {
     displayResults();
 });
