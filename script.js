@@ -15,7 +15,7 @@ const addons = [
     },
     {
         name: "More Tools",
-        image: "morettols.png",
+        image: "morettools.png",
         link: "https://COLOQUE-O-LINK-DO-MORE-TOOLS.COM", 
         description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
         version: "2.5.1",
@@ -56,24 +56,26 @@ function displayResults(query = '') {
     notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
 
     filteredAddons.forEach(addon => {
+        const originalIndex = addons.findIndex(a => a.name === addon.name);
+        
         const addonCardHTML = `
-            <div class="result-item">
+            <div class="result-item" data-index="${originalIndex}">
                 <img src="png/${addon.image}" alt="Imagem do ${addon.name}">
                 <div class="item-content">
                     <h3>${addon.name}</h3>
                     <span class="category-tag">${addon.displayTag}</span>
-                    <a href="${addon.link}" target="_blank" rel="noopener noreferrer" class="download-btn">
+                    <button class="details-btn">
                         <i class="fa-solid fa-download"></i> Baixar Agora
-                    </a>
+                    </button>
                 </div>
             </div>
         `;
         resultsContainer.innerHTML += addonCardHTML;
     });
+
+    addDetailButtonListeners();
 }
 
-// O modal ainda existe, mas não é mais aberto a partir dos cards.
-// Você pode reativar essa funcionalidade no futuro se quiser.
 function openModal(index) {
     const addon = addons[index];
     modalBody.innerHTML = `
@@ -111,10 +113,17 @@ filterButtons.forEach(button => {
     });
 });
 
-// A função que adicionava o evento de clique para os botões de detalhes foi removida
-// pois os botões agora são links de download direto.
+// Esta função foi reativada
+function addDetailButtonListeners() {
+    document.querySelectorAll('.details-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const card = event.target.closest('.result-item');
+            const addonIndex = card.getAttribute('data-index');
+            openModal(addonIndex);
+        });
+    });
+}
 
-// Eventos para fechar o modal (mantidos caso o modal seja usado de outra forma)
 closeModalButton.addEventListener('click', closeModal);
 window.addEventListener('click', (event) => {
     if (event.target === modal) closeModal();
@@ -123,5 +132,4 @@ window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeModal();
 });
 
-// Exibe os resultados iniciais quando a página carrega
 window.addEventListener('load', () => displayResults());
