@@ -18,7 +18,7 @@ body {
     padding: 0 2rem;
 }
 
-/* --- CABEÇALHO COM GIF --- */
+/* --- CABEÇALHO COM GIF (Versão Corrigida) --- */
 .banner-header {
     position: relative;
     height: 60vh;
@@ -28,12 +28,16 @@ body {
     text-align: center;
     color: #fff;
     overflow: hidden;
+}
 
-    /* Configuração do GIF como fundo */
-    background-image: url('png/introbanner.gif');
-    background-size: cover; /* Cobre todo o espaço */
-    background-position: center; /* Centraliza o GIF */
-    background-repeat: no-repeat; /* Evita repetição */
+.background-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ESSENCIAL: Faz o GIF cobrir o espaço sem distorcer */
+    z-index: 1; /* Fica no fundo */
 }
 
 .header-overlay {
@@ -43,12 +47,12 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Escurece o fundo para legibilidade do texto */
-    z-index: 1; /* Fica acima do GIF e abaixo do conteúdo */
+    z-index: 2; /* Fica entre o GIF e o conteúdo */
 }
 
 .header-content {
-    position: relative; /* Garante que o conteúdo fique na frente do overlay */
-    z-index: 2;
+    position: relative;
+    z-index: 3; /* Fica na frente de tudo */
 }
 
 .header-content h1 {
@@ -156,7 +160,7 @@ body {
 
 footer {
     text-align: center;
-    padding: 1rem; /* Reduzi o padding já que está vazio */
+    padding: 1rem;
     color: #666;
     border-top: 1px solid #2c2c2c;
 }
