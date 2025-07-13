@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Addons</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Biblioteca de Addons</h1>
+            <p>Encontre o addon que você procura e baixe com um clique.</p>
+        </header>
+
+        <div class="search-box">
+            <input type="search" id="searchInput" placeholder="Digite o nome do addon...">
+        </div>
+
+        <main id="resultsContainer" class="results-grid">
+            <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
+        </main>
+
+        <p id="notFoundMessage" class="hidden">
+            Nenhum addon encontrado com esse nome. Tente pesquisar por outro termo.
+        </p>
+    </div>
+
+    <footer>
+        <p>Site criado por você com a ajuda de uma IA.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
