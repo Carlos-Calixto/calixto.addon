@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de Addons</title>
+    <title>Biblioteca de Addons</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,24 +11,34 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Biblioteca de Addons</h1>
-            <p>Encontre o addon que você procura e baixe com um clique.</p>
-        </header>
-
-        <div class="search-box">
-            <input type="search" id="searchInput" placeholder="Digite o nome do addon...">
+    <!-- Cabeçalho com o Vídeo de Fundo -->
+    <header class="video-header">
+        <video autoplay muted loop playsinline class="background-video" poster="png/poster_de_exemplo.jpg">
+            <source src="png/introbanner.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+        <div class="header-overlay">
+            <div class="header-content">
+                <h1>Biblioteca de Addons</h1>
+                <p>Encontre o addon que você procura e baixe com um clique.</p>
+                <div class="search-box">
+                    <input type="search" id="searchInput" placeholder="Digite o nome do addon...">
+                </div>
+            </div>
         </div>
+    </header>
 
-        <main id="resultsContainer" class="results-grid">
-            <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
-        </main>
-
-        <p id="notFoundMessage" class="hidden">
-            Nenhum addon encontrado com esse nome. Tente pesquisar por outro termo.
-        </p>
-    </div>
+    <!-- Conteúdo Principal com os Addons -->
+    <main class="main-content">
+        <div class="container">
+            <div id="resultsContainer" class="results-grid">
+                <!-- Os resultados da pesquisa serão inseridos aqui pelo JavaScript -->
+            </div>
+            <p id="notFoundMessage" class="hidden">
+                Nenhum addon encontrado com esse nome. Tente pesquisar por outro termo.
+            </p>
+        </div>
+    </main>
 
     <footer>
         <p>Site criado por você com a ajuda de uma IA.</p>
