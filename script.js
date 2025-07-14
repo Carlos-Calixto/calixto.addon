@@ -4,7 +4,7 @@
 const addons = [
     {
         name: "Block Armor",
-        image: "ballsaddon.png",
+        image: "blockarmor.png",
         link: "https://COLOQUE-O-LINK-DO-BALLS-ADDON.COM", 
         description: "Este addon adiciona armaduras de blocos, exemplo",
         version: "1.1.0",
