@@ -5,11 +5,11 @@ const addons = [
     {
         name: "Block Armor",
         image: "blockarmor.png",
-        link: "https://COLOQUE-O-LINK-DO-BALLS-ADDON.COM", 
-        description: "Este addon adiciona armaduras de blocos, exemplo",
-        version: "1.1.0",
-        game_version: "Bedrock 1.20+",
-        creator: "Daniye",
+        link: "https://www.mediafire.com/file/wgck5qsxfqr6sjk/block_armor%25282%2529.zip/file", 
+        description: "Este addon adiciona armaduras de blocos, como terra, madeira e muito outros.",
+        version: "1.9.3",
+        game_version: "Bedrock 1.21+",
+        creator: "SystemTv",
         category: "Addons",
         displayTag: "Addons"
     },
