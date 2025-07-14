@@ -3,10 +3,10 @@
 // =======================================================================
 const addons = [
     {
-        name: "Balls Addon",
+        name: "Block Armor",
         image: "ballsaddon.png",
         link: "https://COLOQUE-O-LINK-DO-BALLS-ADDON.COM", 
-        description: "Este addon adiciona várias bolas esportivas ao jogo, como beisebol, futebol e vôlei, cada uma com físicas e interações únicas.",
+        description: "Este addon adiciona armaduras de blocos, exemplo",
         version: "1.1.0",
         game_version: "Bedrock 1.20+",
         creator: "Daniye",
