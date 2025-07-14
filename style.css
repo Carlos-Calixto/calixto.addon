@@ -447,3 +447,15 @@ body {
     .modal-img { width: 100%; max-width: 300px; }
     .modal-info { width: 100%; }
 }
+/* --- ESTILOS PARA OS ANÚNCIOS --- */
+.ad-container-horizontal {
+    margin: 40px auto; /* Espaço vertical de 40px e centralizado horizontalmente */
+    padding: 0 2rem;
+    max-width: 1200px; /* Mantém o alinhamento com o container principal do site */
+    text-align: center;
+}
+
+.ad-container-footer {
+    margin-top: 2rem; /* Adiciona um espaço acima do anúncio no rodapé */
+    text-align: center;
+}
