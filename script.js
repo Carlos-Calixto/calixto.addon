@@ -5,7 +5,7 @@ const addons = [
     {
         name: "Block Armor",
         image: "blockarmor.png",
-        link: "https://www.mediafire.com/file/wgck5qsxfqr6sjk/block_armor%25282%2529.zip/file", 
+        link: "https://shrinkme.ink/0WikC", 
         description: "Este addon adiciona armaduras de blocos, como terra, madeira e muito outros.",
         version: "1.9.3",
         game_version: "Bedrock 1.21+",
