@@ -14,13 +14,13 @@ const addons = [
         displayTag: "Addons"
     },
     {
-        name: "More Tools",
-        image: "morettols.png",
-        link: "https://COLOQUE-O-LINK-DO-MORE-TOOLS.COM", 
-        description: "Expanda seu arsenal com mais de 20 novas ferramentas e armaduras feitas de materiais vanilla e novos minérios. Inclui martelos, foices e muito mais!",
-        version: "2.5.1",
-        game_version: "Bedrock 1.20+",
-        creator: "SorYPMod",
+        name: "Phase Block",
+        image: "phaseblock.png",
+        link: "https://shrinkme.ink/d0HWHgp", 
+        description: "crie passagens secretas, atravesse os blocos, se divirta e seja criativo.",
+        version: "V1.0.0.8",
+        game_version: "1.21.90+",
+        creator: "Four Worlds Studios",
         category: "Addons",
         displayTag: "Addons"
     },
