@@ -1,3 +1,16 @@
+# Arquivos do site CALiLA — com link de download adicionado
+
+Os três arquivos do site foram atualizados para incluir o link de download que você passou (Mediafire). Dentro deste documento estão os 3 arquivos prontos para você copiar/colar ou baixar:
+
+* `index.html` (link de download atualizado)
+* `style.css` (sem alterações funcionais, apenas estilo)
+* `script.js` (comentário de tracking e sem necessidade de alteração)
+
+---
+
+## index.html
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -30,7 +43,8 @@
           <li><a href="#screens">Screens</a></li>
           <li><a href="#sobre">Sobre</a></li>
         </ul>
-        <a id="downloadTop" class="btn btn-primary" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">Baixar APK • Em breve</a>
+        <!-- LINK DE DOWNLOAD ADICIONADO AQUI -->
+        <a id="downloadTop" class="btn btn-primary" href="https://www.mediafire.com/file/4l1vhrdwl2lbtwl/calila+optimizer.rar/file" target="_blank" rel="noopener noreferrer">Baixar APK • CALiLA</a>
       </nav>
 
       <div class="hero-content">
@@ -39,7 +53,7 @@
           <p>Reduza latência, ajuste DNS automaticamente, e otimize CPU/GPU com inteligência. Feito por CALiXTO. Desenvolvido com Gemini 2.5 Pro — integração GPT-5 em desenvolvimento.</p>
 
           <div class="hero-cta">
-            <a class="btn btn-accent" id="downloadCTA" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">
+            <a class="btn btn-accent" id="downloadCTA" href="https://www.mediafire.com/file/4l1vhrdwl2lbtwl/calila+optimizer.rar/file" target="_blank" rel="noopener noreferrer">
               <i class="fa-solid fa-download"></i> Baixar CALiLA
             </a>
             <a class="btn btn-ghost" href="#features">Ver recursos</a>
@@ -110,7 +124,7 @@
       </div>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">Download (em breve)</a>
+        <a class="btn btn-primary" href="https://www.mediafire.com/file/4l1vhrdwl2lbtwl/calila+optimizer.rar/file" target="_blank" rel="noopener noreferrer">Download CALiLA</a>
         <a class="btn btn-ghost" href="mailto:contato@calix.to">Fale comigo</a>
       </div>
     </section>
@@ -146,3 +160,219 @@
   <script src="script.js"></script>
 </body>
 </html>
+```
+
+---
+
+## style.css
+
+```css
+:root{
+  --bg: #0b0b0d;
+  --card: #141418;
+  --muted: #9aa4ae;
+  --accent: #00c3ff;
+  --accent-2: #7afcff;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --container: 1200px;
+  --accent-strong: #00a8d6;
+  --text: #e9eef2;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:var(--container);margin:0 auto;padding:0 1.25rem}
+
+/* NAV / HERO */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.brand{font-weight:700;color:var(--text);text-decoration:none;font-size:1.25rem}
+.nav-links{list-style:none;display:flex;gap:1rem}
+.nav-links a{color:var(--text);text-decoration:none;font-weight:600;opacity:.9}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041017;box-shadow:0 6px 20px rgba(0,195,255,0.08)}
+.btn-accent{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+/* Hero */
+.hero{padding:3rem 0 2rem}
+.hero-inner{display:flex;flex-direction:column;gap:2rem}
+.hero-content{display:flex;gap:2.5rem;align-items:center;justify-content:space-between}
+.hero-text{flex:1;max-width:720px}
+.hero-text h1{font-size:2.2rem;margin-bottom:.6rem}
+.hero-text p{color:var(--muted);margin-bottom:1rem}
+.hero-cta{display:flex;gap:1rem;margin-bottom:1rem}
+.quick-list{display:flex;gap:1rem;list-style:none;color:var(--muted);margin-top:0.5rem}
+.quick-list li{display:flex;gap:.5rem;align-items:center;font-weight:600}
+
+/* media */
+.hero-media{width:340px;position:relative}
+.hero-preview{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.04);display:block}
+.badge{position:absolute;left:10px;bottom:-12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041017;padding:.4rem .7rem;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 10px 30px rgba(0,195,255,0.12)}
+
+/* Sections */
+.section{padding:3.5rem 0;border-top:1px solid rgba(255,255,255,0.03)}
+.section h2{font-size:1.5rem;margin-bottom:.5rem}
+.section-sub{color:var(--muted);margin-bottom:1.25rem}
+
+/* Features grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+.card{background:var(--card);padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+.card h3{margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.95rem}
+
+/* Screens */
+.screens-grid{display:flex;gap:1rem;flex-wrap:wrap}
+.screen-thumb{width:220px;border-radius:10px;object-fit:cover;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .18s ease}
+.screen-thumb:hover{transform:translateY(-6px)}
+
+/* About */
+.about-row{display:flex;gap:1.25rem;align-items:center}
+.avatar{width:110px;height:110px;border-radius:999px;border:3px solid var(--accent);object-fit:cover}
+.about-text p{color:var(--muted)}
+.social a{color:var(--muted);margin-right:.7rem;text-decoration:none;font-size:1.25rem}
+
+/* Footer */
+.footer{padding:2rem 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:1200}
+.modal-inner{max-width:900px;width:95%;background:transparent;padding:1rem;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.modal-inner img{max-width:100%;border-radius:12px}
+.modal-close{position:fixed;right:2rem;top:2rem;background:transparent;border:none;color:var(--text);font-size:2rem;cursor:pointer}
+
+/* Responsive */
+@media (max-width:920px){
+  .hero-content{flex-direction:column-reverse}
+  .hero-media{width:100%}
+  .nav-links{display:none}
+  .nav{gap:1rem}
+  .footer-inner{flex-direction:column;gap:.5rem}
+}
+```
+
+---
+
+## script.js
+
+```javascript
+// script.js - funcionalidades básicas para o site CALiLA
+// O link de download direto foi inserido no index.html (Mediafire).
+
+// --- Dados (edite aqui) ---
+const FEATURES = [
+  {
+    title: "Redução de Latência",
+    desc: "Escolha rotas e servidores otimizados automaticamente para reduzir ping em jogos.",
+    icon: "fa-solid fa-bolt"
+  },
+  {
+    title: "Troca Automática de DNS",
+    desc: "Seleciona DNS de baixa latência dependendo do servidor do jogo e da sua região.",
+    icon: "fa-solid fa-dns"
+  },
+  {
+    title: "Tuning de CPU & GPU",
+    desc: "Perfis prontos (Jogo/Streaming/Produtividade) para melhorar desempenho sem quebrar estabilidade.",
+    icon: "fa-solid fa-microchip"
+  },
+  {
+    title: "Monitoramento em Tempo Real",
+    desc: "Gráficos e logs simplificados para ver o impacto das otimizações.",
+    icon: "fa-solid fa-chart-line"
+  },
+  {
+    title: "Perfis e Automação",
+    desc: "Crie perfis automáticos que aplicam configurações quando um jogo é detectado.",
+    icon: "fa-solid fa-user-gear"
+  },
+  {
+    title: "Backup & Restauração",
+    desc: "Restaure configurações anteriores com um clique se quiser desfazer alterações.",
+    icon: "fa-solid fa-file-arrow-up"
+  }
+];
+
+// --- Render features ---
+const featuresGrid = document.getElementById('featuresGrid');
+function renderFeatures(){
+  featuresGrid.innerHTML = '';
+  FEATURES.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:.6rem">
+        <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,195,255,0.06);display:flex;align-items:center;justify-content:center">
+          <i class="${f.icon}" style="font-size:18px;color:var(--accent)"></i>
+        </div>
+        <div>
+          <h3 style="margin:0">${f.title}</h3>
+        </div>
+      </div>
+      <p>${f.desc}</p>
+    `;
+    featuresGrid.appendChild(card);
+  });
+}
+renderFeatures();
+
+// --- Screens modal ---
+const screensGrid = document.getElementById('screensGrid');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalClose = document.querySelector('.modal-close');
+
+if (screensGrid){
+  screensGrid.addEventListener('click', (e) => {
+    const img = e.target.closest('img');
+    if (!img) return;
+    const src = img.getAttribute('src');
+    modalImg.setAttribute('src', src);
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+  });
+}
+
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden','true');
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  }
+});
+
+// --- Footer year ---
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// --- Download CTA tracking (simples) ---
+document.querySelectorAll('#downloadCTA, #downloadTop').forEach(el => {
+  el.addEventListener('click', () => {
+    // Aqui você pode adicionar analytics / evento para servidor
+    console.log('Download clicado - redirecionar para o link real.');
+  });
+});
+
+// --- Small accessibility: enable Esc to close modal ---
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  }
+});
+```
+
+---
+
+### Observações importantes
+
+1. **Link direto:** o link que você deu (Mediafire) foi inserido diretamente em todas as CTAs (top, hero e seção "Sobre").
+2. **Segurança / Mídia:** recomendo que, quando possível, hospede o arquivo em um servidor próprio ou em um CDN (Google Drive com link direto, AWS S3, ou GitHub Releases) para ter controle da taxa de downloads e segurança. Arquivos compactados de fontes externas podem às vezes ser sinalizados por antivírus; informe os usuários.
+3. **Testes:** após subir os arquivos no seu servidor, abra o `index.html` e clique em "Baixar" para confirmar que o Mediafire entrega o arquivo como esperado.
+4. **Substituições:** se quiser que eu troque o link para outro host (ex.: GitHub/GDrive/AWS) eu já atualizo os 3 arquivos aqui.
+
+Se quiser, eu preparo também o **README** com instruções de deploy (onde colocar as imagens em `png/`, permissões e metatags) ou faço uma **versão light** do visual.```
