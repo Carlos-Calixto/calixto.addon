@@ -1,135 +1,107 @@
-// =======================================================================
-// ÁREA DE CONFIGURAÇÃO - ADICIONE E PERSONALIZE SEU CONTEÚDO AQUI!
-// =======================================================================
-const addons = [
-    {
-        name: "Block Armor",
-        image: "blockarmor.png",
-        link: "https://shrinkme.ink/0WikC", 
-        description: "Este addon adiciona armaduras de blocos, como terra, madeira e muito outros.",
-        version: "1.9.3",
-        game_version: "Bedrock 1.21+",
-        creator: "SystemTv",
-        category: "Addons",
-        displayTag: "Addons"
-    },
-    {
-        name: "Phase Block",
-        image: "phaseblock.png",
-        link: "https://shrinkme.ink/d0HWHgp", 
-        description: "crie passagens secretas, atravesse os blocos, se divirta e seja criativo.",
-        version: "V1.0.0.8",
-        game_version: "1.21.90+",
-        creator: "Four Worlds Studios",
-        category: "Addons",
-        displayTag: "Addons"
-    },
+// script.js - funcionalidades básicas para o site CALiLA
+// Lembre-se: troque "DOWNLOAD_LINK_HERE" no index.html pelo link real do app
+
+// --- Dados (edite aqui) ---
+const FEATURES = [
+  {
+    title: "Redução de Latência",
+    desc: "Escolha rotas e servidores otimizados automaticamente para reduzir ping em jogos.",
+    icon: "fa-solid fa-bolt"
+  },
+  {
+    title: "Troca Automática de DNS",
+    desc: "Seleciona DNS de baixa latência dependendo do servidor do jogo e da sua região.",
+    icon: "fa-solid fa-dns"
+  },
+  {
+    title: "Tuning de CPU & GPU",
+    desc: "Perfis prontos (Jogo/Streaming/Produtividade) para melhorar desempenho sem quebrar estabilidade.",
+    icon: "fa-solid fa-microchip"
+  },
+  {
+    title: "Monitoramento em Tempo Real",
+    desc: "Gráficos e logs simplificados para ver o impacto das otimizações.",
+    icon: "fa-solid fa-chart-line"
+  },
+  {
+    title: "Perfis e Automação",
+    desc: "Crie perfis automáticos que aplicam configurações quando um jogo é detectado.",
+    icon: "fa-solid fa-user-gear"
+  },
+  {
+    title: "Backup & Restauração",
+    desc: "Restaure configurações anteriores com um clique se quiser desfazer alterações.",
+    icon: "fa-solid fa-file-arrow-up"
+  }
 ];
-// =======================================================================
-// FIM DA ÁREA DE CONFIGURAÇÃO - O IDEAL É NÃO ALTERAR O CÓDIGO ABAIXO
-// =======================================================================
 
-// --- ELEMENTOS DO DOM ---
-const searchInput = document.getElementById('searchInput');
-const resultsContainer = document.getElementById('resultsContainer');
-const notFoundMessage = document.getElementById('notFoundMessage');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const modal = document.getElementById('addonModal');
-const modalBody = document.getElementById('modalBody');
-const closeModalButton = document.querySelector('.close-button');
-
-let currentCategory = 'all'; 
-
-// --- FUNÇÕES ---
-
-function displayResults(query = '') {
-    resultsContainer.innerHTML = '';
-    const normalizedQuery = query.toLowerCase().trim();
-
-    const filteredAddons = addons.filter(addon => {
-        const matchesCategory = currentCategory === 'all' || addon.category === currentCategory;
-        const searchableText = `${addon.name} ${addon.category} ${addon.displayTag} ${addon.description} ${addon.game_version}`.toLowerCase();
-        const matchesSearch = searchableText.includes(normalizedQuery);
-        return matchesCategory && matchesSearch;
-    });
-
-    notFoundMessage.classList.toggle('hidden', filteredAddons.length > 0);
-
-    filteredAddons.forEach(addon => {
-        const originalIndex = addons.findIndex(a => a.name === addon.name);
-        
-        const addonCardHTML = `
-            <div class="result-item" data-index="${originalIndex}">
-                <img src="png/${addon.image}" alt="Imagem do ${addon.name}">
-                <div class="item-content">
-                    <h3>${addon.name}</h3>
-                    <span class="category-tag">${addon.displayTag}</span>
-                    <button class="details-btn">
-                        <i class="fa-solid fa-download"></i> Baixar Agora
-                    </button>
-                </div>
-            </div>
-        `;
-        resultsContainer.innerHTML += addonCardHTML;
-    });
-
-    addDetailButtonListeners();
-}
-
-function openModal(index) {
-    const addon = addons[index];
-    modalBody.innerHTML = `
-        <img src="png/${addon.image}" alt="${addon.name}" class="modal-img">
-        <div class="modal-info">
-            <h2>${addon.name}</h2>
-            <p class="modal-description">${addon.description}</p>
-            <ul class="modal-details-list">
-                <li><i class="fa-solid fa-code-commit"></i> <strong>Versão:</strong> ${addon.version}</li>
-                <li><i class="fa-solid fa-gamepad"></i> <strong>Compatível com:</strong> ${addon.game_version}</li>
-                <li><i class="fa-solid fa-user-pen"></i> <strong>Criador:</strong> ${addon.creator}</li>
-                <li><i class="fa-solid fa-folder-open"></i> <strong>Categoria:</strong> ${addon.category}</li>
-            </ul>
-            <a href="${addon.link}" target="_blank" rel="noopener noreferrer" class="download-btn">
-                <i class="fa-solid fa-download"></i> Baixar Agora
-            </a>
+// --- Render features ---
+const featuresGrid = document.getElementById('featuresGrid');
+function renderFeatures(){
+  featuresGrid.innerHTML = '';
+  FEATURES.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:.6rem">
+        <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,195,255,0.06);display:flex;align-items:center;justify-content:center">
+          <i class="${f.icon}" style="font-size:18px;color:var(--accent)"></i>
         </div>
+        <div>
+          <h3 style="margin:0">${f.title}</h3>
+        </div>
+      </div>
+      <p>${f.desc}</p>
     `;
+    featuresGrid.appendChild(card);
+  });
+}
+renderFeatures();
+
+// --- Screens modal ---
+const screensGrid = document.getElementById('screensGrid');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalClose = document.querySelector('.modal-close');
+
+if (screensGrid){
+  screensGrid.addEventListener('click', (e) => {
+    const img = e.target.closest('img');
+    if (!img) return;
+    const src = img.getAttribute('src');
+    modalImg.setAttribute('src', src);
     modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+  });
 }
 
-function closeModal() {
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden','true');
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
     modal.style.display = 'none';
-}
-
-// --- EVENT LISTENERS ---
-searchInput.addEventListener('input', () => displayResults(searchInput.value));
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        currentCategory = button.getAttribute('data-category');
-        displayResults(searchInput.value);
-    });
+    modal.setAttribute('aria-hidden','true');
+  }
 });
 
-// Esta função foi reativada
-function addDetailButtonListeners() {
-    document.querySelectorAll('.details-btn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const card = event.target.closest('.result-item');
-            const addonIndex = card.getAttribute('data-index');
-            openModal(addonIndex);
-        });
-    });
-}
+// --- Footer year ---
+document.getElementById('year').textContent = new Date().getFullYear();
 
-closeModalButton.addEventListener('click', closeModal);
-window.addEventListener('click', (event) => {
-    if (event.target === modal) closeModal();
-});
-window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeModal();
+// --- Download CTA tracking (simples) ---
+document.querySelectorAll('#downloadCTA, #downloadTop').forEach(el => {
+  el.addEventListener('click', () => {
+    // Aqui você pode adicionar analytics / evento para servidor
+    console.log('Download clicado - redirecionar para o link real.');
+  });
 });
 
-window.addEventListener('load', () => displayResults());
+// --- Small accessibility: enable Esc to close modal ---
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  }
+});
