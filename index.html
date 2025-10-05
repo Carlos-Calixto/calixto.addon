@@ -1,133 +1,148 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Addons | Por CALiXTO</title>
-    <!-- ÍCONE DO SITE (FAVICON) ADICIONADO AQUI -->
-    <link rel="icon" type="image/png" href="png/iconpage5.png">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CALiLA — Otimização Inteligente | Por CALiXTO</title>
+  <link rel="icon" href="png/iconpage5.png" type="image/png" />
 
-    <!-- ======================================================= -->
-    <!-- CÓDIGO PRINCIPAL DO ADSENSE (PARA ANÚNCIOS AUTOMÁTICOS) -->
-    <!-- ======================================================= -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5128521295733168"
-     crossorigin="anonymous"></script>
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+  <!-- Adsense (opcional) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5128521295733168"
+   crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="CALiLA — app de otimização para reduzir latência, otimizar CPU/GPU, trocar DNS automaticamente e melhorar seu desempenho em jogos e no PC.">
 </head>
 <body>
 
-    <header class="banner-header">
-        <img src="png/introbanner.gif" alt="Banner animado do site" class="background-gif">
-        <div class="header-overlay"></div>
-        <nav class="main-nav">
-            <div class="container">
-                <a href="#" class="logo">CALiXTO</a>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#addons">Conteúdo</a></li>
-                    <li><a href="#sobre-mim">Sobre Mim</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="header-content">
-            <h1>Sua Biblioteca de Mods e Addons</h1>
-            <p>Encontre, explore e baixe o melhor conteúdo com um clique.</p>
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="searchInput" placeholder="Pesquise por addons, mods, shaders...">
-            </div>
-        </div>
-    </header>
+  <header class="hero">
+    <div class="hero-inner container">
+      <nav class="nav">
+        <a class="brand" href="#">CALiLA</a>
+        <ul class="nav-links">
+          <li><a href="#features">Recursos</a></li>
+          <li><a href="#screens">Screens</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+        <a id="downloadTop" class="btn btn-primary" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">Baixar APK • Em breve</a>
+      </nav>
 
-    <!-- ======================================================= -->
-    <!-- BLOCO DE ANÚNCIO 1: TOPO DA PÁGINA (SUBSTITUA O SLOT ID) -->
-    <!-- ======================================================= -->
-    <div class="ad-container-horizontal">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5128521295733168"
-             data-ad-slot="1111111111" <!-- SUBSTITUA PELO SEU SLOT ID REAL -->
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>CALiLA — Otimização Inteligente</h1>
+          <p>Reduza latência, ajuste DNS automaticamente, e otimize CPU/GPU com inteligência. Feito por CALiXTO. Desenvolvido com Gemini 2.5 Pro — integração GPT-5 em desenvolvimento.</p>
+
+          <div class="hero-cta">
+            <a class="btn btn-accent" id="downloadCTA" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">
+              <i class="fa-solid fa-download"></i> Baixar CALiLA
+            </a>
+            <a class="btn btn-ghost" href="#features">Ver recursos</a>
+          </div>
+
+          <ul class="quick-list">
+            <li><i class="fa-solid fa-bolt"></i> Latência reduzida</li>
+            <li><i class="fa-solid fa-dns"></i> DNS inteligente</li>
+            <li><i class="fa-solid fa-microchip"></i> CPU & GPU tuning</li>
+          </ul>
+        </div>
+
+        <div class="hero-media">
+          <img src="png/screen1.png" alt="Preview CALiLA" class="hero-preview">
+          <div class="badge">Versão Beta • v0.9</div>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <main id="addons" class="main-content">
-        <div class="container">
-            <div class="filter-container">
-                <h2>Explorar Categorias</h2>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-category="all">Todos</button>
-                    <button class="filter-btn" data-category="Addons">Addons</button>
-                    <button class="filter-btn" data-category="Mods">Mods</button>
-                    <button class="filter-btn" data-category="Shaders">Shaders</button>
-                </div>
-            </div>
+  <!-- OPTIONAL ADS TOP -->
+  <div class="ad-row container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5128521295733168"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
-            <div id="resultsContainer" class="results-grid"></div>
-            <p id="notFoundMessage" class="hidden">
-                Nenhum conteúdo encontrado. Tente pesquisar por outro termo.
-            </p>
-        </div>
-    </main>
+  <main class="container">
+    <!-- Features -->
+    <section id="features" class="section features">
+      <h2>Recursos principais</h2>
+      <p class="section-sub">Ferramentas pensadas para melhorar sua experiência em jogos e produtividade.</p>
 
-    <section id="sobre-mim" class="about-section">
-        <div class="container">
-            <h2>Sobre o Criador</h2>
-            <div class="about-content">
-                <img src="png/perfilmine.png" alt="Foto do CALiXTO" class="profile-pic">
-                <div class="about-text">
-                    <h3>Olá, eu sou CALiXTO!</h3>
-                    <p>
-                        Seja bem-vindo(a) à minha biblioteca de conteúdo! Sou um jogador de Minecraft e eu gosto de criar conteúdo para a comunidade. Este site é o lugar onde eu compartilho criações com vocês. Espero que gostem e que os addons ou mods ou shaders melhorem sua gameplay!
-                    </p>
-                    <div class="social-links">
-                        <a href="#" target="_blank" title="Meu YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" target="_blank" title="Meu Discord"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" target="_blank" title="Meu Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div id="featuresGrid" class="grid">
+        <!-- Conteúdo populado via script.js -->
+      </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>© 2025 CALiXTO. Todos os direitos reservados.</p>
-            <p>Criado com ❤️ para a comunidade.</p>
-            
-            <!-- ======================================================= -->
-            <!-- BLOCO DE ANÚNCIO 2: RODAPÉ (SUBSTITUA O SLOT ID)       -->
-            <!-- ======================================================= -->
-            <div class="ad-container-footer">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5128521295733168"
-                     data-ad-slot="2222222222" <!-- SUBSTITUA PELO SEU SLOT ID REAL -->
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
-    </footer>
+    <!-- Screenshots -->
+    <section id="screens" class="section screens">
+      <h2>Telas</h2>
+      <p class="section-sub">Visão rápida do app.</p>
 
-    <div id="addonModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <div id="modalBody"></div>
+      <div class="screens-grid" id="screensGrid">
+        <img src="png/screen1.png" alt="Tela 1" data-index="0" class="screen-thumb">
+        <img src="png/screen2.png" alt="Tela 2" data-index="1" class="screen-thumb">
+        <img src="png/screen3.png" alt="Tela 3" data-index="2" class="screen-thumb">
+      </div>
+    </section>
+
+    <!-- About / Creator -->
+    <section id="sobre" class="section about">
+      <h2>Sobre o CALiXTO e o CALiLA</h2>
+      <div class="about-row">
+        <img src="png/perfilmine.png" alt="Calixto" class="avatar">
+        <div class="about-text">
+          <p>Sou o <strong>CALIxTO</strong>, criador do CALiLA — uma ferramenta de otimização pensada para jogadores e usuários que querem o máximo do seu PC e conexão. O app já usa código gerado com Gemini 2.5 Pro para funções automáticas; a integração com GPT-5 está prevista e será anunciada aqui quando estiver pronta.</p>
+          <div class="social">
+            <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" title="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" title="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
         </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="DOWNLOAD_LINK_HERE" target="_blank" rel="noopener">Download (em breve)</a>
+        <a class="btn btn-ghost" href="mailto:contato@calix.to">Fale comigo</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> CALiXTO — CALiLA</div>
+      <div class="legal">Criado com ❤️. <small>Beta • Leia nossa <a href="#">Política de Privacidade</a>.</small></div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- ADS FOOTER (opcional) -->
+    <div class="ad-row container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5128521295733168"
+           data-ad-slot="2222222222"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </footer>
+
+  <!-- Modal de visualização de screenshot -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <img id="modalImg" src="" alt="Screenshot ampliada">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
